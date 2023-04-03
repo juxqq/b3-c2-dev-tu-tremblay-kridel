@@ -1,0 +1,30 @@
+button {
+    padding: 15px;
+    width: 75px;
+    height: 55px;
+    margin-top: 10px;
+    background-color: rgb(194, 194, 194);
+    color: black;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.total{
+    font-size: 20px;
+}
+
+body{
+    text-align: center;
+    margin-top: 12%;
+}
+
+.toto{
+    margin-left: 250px;
+}
+button:hover {
+    cursor: pointer;
+    background-color: rgb(182, 178, 178);
+   }
+   button:active {
+    background-color: rgb(136, 136, 136);
+   }

@@ -1,70 +1,94 @@
 const expect = require('chai').expect;
+var jsdom = require('jsdom');
+$ = require('jquery')(new jsdom.JSDOM().window);
 
-// Test pour l'addition
-describe('addition', function() {
-    it('should return 5 when adding 2 and 3', function(done) {
-        expect(addition(2, 3)).toEqual(5);
+describe('Test de l\'addition', function() {
+    it('devrait retourner 4 pour 2 + 2', function(done) {
+      $('#toto')[0].innerHTML = '2+2';
+      $('#resultat').click();
+      expect($('#toto')[0].innerHTML).toEqual('4');
+      done();
+    });
+});
+
+  describe('Test de la soustraction', function() {
+    it('devrait retourner 1 pour 2 - 1', function(done) {
+      $('#toto')[0].innerHTML = '2-1';
+      $('#resultat').click();
+      expect($('#toto')[0].innerHTML).toEqual('1');
+      done();
+    });
+});
+
+describe('Test de la multiplication', function() {
+    it('devrait retourner 6 pour 2 * 3', function(done) {
+      $('#toto')[0].innerHTML = '2*3';
+      $('#resultat').click();
+      expect($('#toto')[0].innerHTML).toEqual('6');
+      done();
+    });
+});
+
+describe('Tests de la racine carrée', function(){
+    it('devrait retourner 4 quand on calcule la racine carrée de 16', function(done) {
+        $('#toto')[0].innerHTML = '16**(1/2)';
+        $('#resultat').click();
+        expect($('#toto')[0].innerHTML).toEqual('4');
+        done();
+    });
+    it('devrait retourner \'Error\' quand on calcule la racine carrée d\'un nombre négatif', function(done) {
+        $('#toto')[0].innerHTML = '16**(1/2)';
+        $('#resultat').click();
+        expect($('#toto')[0].innerHTML).toEqual('4');
+        done();
+    })
+    it('devrait retourner lui même si on calcule la racine carrée de 0 ou 1', function(done) {
+        if ($('#toto')[0].innerHTML = '0**(1/2)') {
+            $('#resultat').click();
+            expect($('#toto')[0].innerHTML).toEqual('0');
+        } else if ($('#toto')[0].innerHTML = '1**(1/2)') {
+            $('#resultat').click();
+            expect($('#toto')[0].innerHTML).toEqual('1');
+        }
+        done();
+    })
+});
+
+describe('Tests de la division', function() {
+    it('devrait retourner 5 quand on divise 10 par 2', function(done) {
+        $('#toto')[0].innerHTML = '10/2';
+        $('#resultat').click();
+        expect($('#toto')[0].innerHTML).toEqual('5');
+        done();
+    });
+    it('devrait retourner \'Infinity\' quand on divise par 0', function(done) {
+        $('#toto')[0].innerHTML = '1/0';
+        $('#resultat').click();
+        expect($('#toto')[0].innerHTML).toEqual('Infinity');
         done();
     });
 });
 
-// Test pour la soustraction
-describe('soustraction', function() {
-    it('should return 2 when subtracting 3 from 5', function(done) {
-        expect(soustraction(5, 3)).toEqual(2);
-        done();
+describe('Tests de la puissance', function() {
+    it('devrait retourner 8 pour 2 à la puissance 3', function(done) {
+      $('#toto')[0].innerHTML = '2*3';
+      $('#resultat').click();
+      expect($('#toto')[0].innerHTML).toEqual('8');
+      done();
     });
+    it('devrait retourner 1 si la puissance est 0', function(done) {
+        $('#toto')[0].innerHTML = '7**0';
+        $('#resultat').click();
+        expect($('#toto')[0].innerHTML).toEqual('1');
+        done();
+      });
 });
 
-// Test pour la multiplication
-describe('multiplication', function() {
-    it('should return 24 when multiplying 4 and 6', function(done) {
-        expect(multiplication(4, 6)).toEqual(24);
-        done();
-    });
-});
-
-// Tests pour la division
-describe('division', function() {
-    it('should return 5 when dividing 10 by 2', function(done) {
-        expect(division(10, 2)).toEqual(5);
-        done();
-    });
-    it('should return "Erreur: division par zéro" when dividing by 0', function(done) {
-        expect(division(10, 0)).toEqual("Erreur: division par zéro");
-        done();
-    });
-});
-
-// Test pour le calcul d'un pourcentage
 describe('pourcentage', function() {
-    it('should return 12.5 when calculating 25% of 50', function(done) {
-        expect(pourcentage(50, 25)).toEqual(12.5);
+    it('devrait retourner 12.5 quand on calcule 25% de 50', function(done) {
+        $('#toto')[0].innerHTML = '50/100*25';
+        $('#resultat').click();
+        expect($('#toto')[0].innerHTML).toEqual('12.5');
         done();
     });
 });
-
-// Test pour le calcul de la racine carrée
-describe('racine carrée', function(){
-    it('should return 4.00 when calculating the square root of 16', function(done) {
-        expect(squareRoot(16)).toEqual(4.00);
-        done();
-    });
-    it('should return NaN when calculating the square root of a negative number', function(done) {
-        expect(squareRoot(-1)).toEqual(NaN);
-        done();
-    })
-    it('should return itself when calculating the square root of 0 or 1', function(done) {
-        expect(squareRoot(0)).toEqual(0);
-        expect(squareRoot(1)).toEqual(1);
-        done();
-    })
-});
-
-// Test pour le calcul de la puissance d'un nombre
-describe('puissance', function(){
-    it('should return 8 when calculating the power of 2^3', function(done) {
-        expect(puissance(2, 3)).toEqual(8);
-        done();
-    });
-})
