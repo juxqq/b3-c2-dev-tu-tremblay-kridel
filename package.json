@@ -13,6 +13,10 @@
     "license": "ISC",
     "dependencies": {
         "chai": "^4.3.7",
+        "jquery": "^3.6.4",
         "mocka": "^0.0.1"
+    },
+    "devDependencies": {
+        "jsdom": "^21.1.1"
     }
 }

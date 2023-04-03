@@ -1,4 +1,6 @@
 const expect = require('chai').expect;
+var jsdom = require('jsdom');
+$ = require('jquery')(new jsdom.JSDOM().window);
 
 describe('Test de l\'addition', function() {
     it('devrait retourner 4 pour 2 + 2', function(done) {
@@ -52,7 +54,6 @@ describe('Tests de la racine carrée', function(){
     })
 });
 
-// Tests pour la division
 describe('Tests de la division', function() {
     it('devrait retourner 5 quand on divise 10 par 2', function(done) {
         $('#toto')[0].innerHTML = '10/2';
